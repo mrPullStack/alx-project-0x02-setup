@@ -39,3 +39,14 @@ export default function PostsPage() {
         </>
     );
 }
+
+export async function getStaticProps() {
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=10');
+    const posts: PostProps[] = await res.json();
+
+    return {
+        props: {
+        posts,
+        },
+    };
+}
